@@ -18,12 +18,12 @@
         left: -6px;
         right: -6px;
         background: linear-gradient(180deg,
-                                    rgba(0, 123, 255, 0.8) 0%,
-                                    rgba(30, 144, 255, 0.8) 50%,
-                                    rgba(135, 206, 250, 0.8) 100%);
+                rgba(0, 123, 255, 0.8) 0%,
+                rgba(30, 144, 255, 0.8) 50%,
+                rgba(135, 206, 250, 0.8) 100%);
         z-index: -1;
         border-radius: 26px;
-    }
+    };
 }
 
 .card-header,
@@ -31,6 +31,10 @@
     background-color: transparent;
 }
 
+.card-img {
+    border-top: 3px solid rgba(30, 144, 255, 0.8) !important;
+    border-bottom: 3px solid rgba(30, 144, 255, 0.8) !important;
+}
 
 button {
     background: linear-gradient(180deg,
@@ -47,4 +51,21 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.shuttleBtn {
+    width: 20%;
+    height: auto;
+}
+
+@keyframes shake {
+    0% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    100% { transform: rotate(-5deg); }
+}
+
+.shake-animation {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+    transform-origin: center;
 }
