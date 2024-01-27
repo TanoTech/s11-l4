@@ -48,11 +48,11 @@ const GetNews: React.FC<GetNewsProps> = ({ limit }) => {
         <Col className='d-flex flex-wrap gap-3 justify-content-center my-5'>
             {articles.map((news) => (
                 <Card className='astronaveCard' style={{ width: '15rem' }} key={news.id}>
-                    <CardHeader className='astronaveCardHeader' style={{ height: '160px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <CardHeader className='astronaveCardHeader' style={{ height: '180px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <h2 style={{ fontSize: '20px', padding: '1em 0', textAlign: 'center', marginTop: '2rem' }}>{news.title}</h2>
                     </CardHeader>
                     <CardImg className='astronaveCardImg img-fluid' src={news.image_url} style={{ height: '120px', objectFit: 'cover', border: 'none', borderRadius: '0' }}></CardImg>
-                    <CardBody className='astronaveCardBody'>
+                    <CardBody className='astronaveCardBody' style={{ height: '150px'}}>
                         <p>{truncateWord(news.summary, 100)}...</p>
                     </CardBody>
                     <CardFooter className='d-flex flex-column align-items-center astronaveCardFooter'>
