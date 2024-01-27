@@ -1,0 +1,8 @@
+.navImg {
+    width: 50rem;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+}

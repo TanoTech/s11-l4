@@ -1,0 +1,50 @@
+.card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background: linear-gradient(180deg,
+            rgba(254, 221, 98, 0.8) 0%,
+            rgba(204, 164, 61, 0.8) 25%,
+            rgba(181, 145, 76, 0.8) 50%,
+            rgba(204, 164, 61, 0.8) 75%,
+            rgba(254, 221, 98, 0.8) 100%);
+    border-radius: 20px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        bottom: -6px;
+        left: -6px;
+        right: -6px;
+        background: linear-gradient(180deg,
+                                    rgba(0, 123, 255, 0.8) 0%,
+                                    rgba(30, 144, 255, 0.8) 50%,
+                                    rgba(135, 206, 250, 0.8) 100%);
+        z-index: -1;
+        border-radius: 26px;
+    }
+}
+
+.card-header,
+.card-footer {
+    background-color: transparent;
+}
+
+
+button {
+    background: linear-gradient(180deg,
+            rgba(0, 123, 255, 0.8) 0%,
+            rgba(30, 144, 255, 0.8) 50%,
+            rgba(135, 206, 250, 0.8) 100%);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
