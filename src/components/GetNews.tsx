@@ -13,7 +13,7 @@ interface Article {
     url: string
 }
 
-const GetNews: React.FC = () => {
+const GetNews = () => {
     const [articles, setArticles] = useState<Article[]>([]);
 
     useEffect(() => {
