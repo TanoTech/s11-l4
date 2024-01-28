@@ -1,8 +1,7 @@
 .navImg {
-    width: 200em;
+    width: 7em;
 }
 
 .nav{
     display: flex;
-    flex-direction: column;
 }

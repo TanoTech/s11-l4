@@ -1,0 +1,48 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20em;
+}
+
+.card-header, .card-body, .card-footer {
+    display: flex;
+    flex-direction: column;
+    min-height: 8em;
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+.card-body {
+    flex-grow: 1;
+    background-color: transparent!important;
+    color: white; 
+}
+
+.card-footer {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.blurBg {
+    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.expandOnHover {
+    display: none;
+    overflow: hidden;
+    transition: height 1s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+}
+
+.card:hover .expandOnHover {
+    display: block;
+    opacity: 1;
+}

@@ -10,22 +10,42 @@ interface Article {
     title: string;
     updated_at: number;
     url: string;
+    launches: string,
+    events: string,
 }
 
-interface NewsContextData {
+interface Blog {
+    id: number;
+    image_url: string;
+    news_site: string;
+    published_at: number;
+    summary: string;
+    title: string;
+    updated_at: number;
+    url: string;
+    launches: string;
+    events: string;
+}
+
+interface ApiContextData {
     articles: Article[];
+    blogs: Blog[]; 
     fetchArticles: (limit?: number, title_contains?: string ) => void;
+    fetchBlogs: (limit?: number, title_contains?: string ) => void; 
 }
 
-const NewsContext = createContext<NewsContextData>({
+const ApiContext = createContext<ApiContextData>({
     articles: [],
+    blogs: [], 
     fetchArticles: () => {},
+    fetchBlogs: () => {}, 
 });
 
-export const useNews = () => useContext(NewsContext);
+export const useApi = () => useContext(ApiContext);
 
-export const NewsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ApiProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [articles, setArticles] = useState<Article[]>([]);
+    const [blogs, setBlogs] = useState<Blog[]>([]);
 
     const fetchArticles = useCallback(async (limit?: number, title_contains?: string) => {
         try {
@@ -46,9 +66,28 @@ export const NewsProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
     }, []);
 
+    const fetchBlogs = useCallback(async (limit?: number, title_contains?: string) => {
+        try {
+            let url = 'https://api.spaceflightnewsapi.net/v4/blogs/';
+
+            if (limit) {
+                url += `?limit=${limit}`;
+            }
+
+            if (title_contains) {
+                url += `?title_contains=${title_contains}`;
+            }
+
+            const response = await axios.get(url);
+            setBlogs(response.data.results);
+        } catch (error) {
+            console.error("Errore durante il recupero dei blog:", error);
+        }
+    }, []);
+
     return (
-        <NewsContext.Provider value={{ articles, fetchArticles }}>
+        <ApiContext.Provider value={{ articles, blogs, fetchArticles, fetchBlogs }}>
             {children}
-        </NewsContext.Provider>
+        </ApiContext.Provider>
     );
 };

@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardBody, CardFooter, CardHeader, Col, Button } from 'react-bootstrap';
 import { useApi } from './NewsProvider';
 
-interface GetNewsProps {
+interface GetBlogsProps {
     limit: number,
 }
 
-const GetNews: React.FC<GetNewsProps> = ({ limit }) => {
-    const { articles, fetchArticles } = useApi();
-    const [displayedArticles, setDisplayedArticles] = useState(limit);
+const GetBlogs: React.FC<GetBlogsProps> = ({ limit }) => {
+    const { blogs, fetchBlogs } = useApi();
+    const [displayedBlogs, setDisplayedBlogs] = useState(limit);
 
     useEffect(() => {
-        fetchArticles(displayedArticles);
-    }, [fetchArticles, displayedArticles]);
+        fetchBlogs(displayedBlogs);
+    }, [fetchBlogs, displayedBlogs]);
 
-    const loadMoreArticles = () => {
-        setDisplayedArticles(displayedArticles + 10);
+    const loadMoreBlogs = () => {
+        setDisplayedBlogs(displayedBlogs + 10);
     };
 
     const truncateWord = (title: string, maxLength: number): string => {
@@ -59,7 +59,7 @@ const GetNews: React.FC<GetNewsProps> = ({ limit }) => {
 
     const handleCardLeave = (event: React.MouseEvent<HTMLDivElement>) => {
         const cardBody = event.currentTarget.querySelector('.expandOnHover') as HTMLDivElement;
-        
+
         if (cardBody) {
             cardBody.style.display = 'none';
         }
@@ -67,40 +67,38 @@ const GetNews: React.FC<GetNewsProps> = ({ limit }) => {
 
     return (
         <Col className='d-flex flex-wrap gap-3 justify-content-center my-5'>
-            <h2>News</h2>
-            {articles.map((news) => (
+            <h2>Blogs</h2>
+            {blogs.map((blog) => (
                 <Card onMouseEnter={handleCardHover}
                     onMouseLeave={handleCardLeave}
-                    key={news.id}
-                    style={{ backgroundImage: `url(${news.image_url})` }}>
+                    key={blog.id}
+                    style={{ backgroundImage: `url(${blog.image_url})` }}>
                     <div className='d-flex'>
                         <div>
                             <CardHeader className='blurBg'>
-                                <h2 >{news.title}</h2>
+                                <h2 >{blog.title}</h2>
                             </CardHeader>
                             <CardBody className='expandOnHover' style={{ display: 'none' }}>
-                                <p>{truncateWord(news.summary, 300)}...</p>
+                                <p>{truncateWord(blog.summary, 300)}...</p>
                             </CardBody>
                             <CardFooter className='d-flex justify-content-center blurBg'>
                                 <div className='d-flex justify-content-around'>
-                                    <p>{news.news_site}</p>
-                                    <p>{formatDate(news.published_at)}</p>
+                                    <p>{blog.news_site}</p>
+                                    <p>{formatDate(blog.published_at)}</p>
                                 </div>
                                 <div>
-                                    <a href={news.url} target="_blank" rel="noopener noreferrer">
-                                        <Button>Read the full article</Button>
+                                    <a href={blog.url} target="_blank" rel="noopener noreferrer">
+                                        <Button>Read the full blog</Button>
                                     </a>
                                 </div>
                             </CardFooter>
-                            {/* <img className='img-fluid shuttleBtn' src="/assets/imgs/shuttleCard.png" alt="" /> */}
                         </div>
                     </div>
                 </Card>
-            ))
-            }
-            <Button className='w-100' onClick={loadMoreArticles}>Load more articles</Button>
-        </Col >
+            ))}
+            <Button className='w-100' onClick={loadMoreBlogs}>Load more blogs</Button>
+        </Col>
     );
 };
 
-export default GetNews;
+export default GetBlogs;

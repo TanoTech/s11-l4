@@ -1,18 +1,17 @@
 import GetNews from './components/GetNews';
-import { NewsProvider } from './components/NewsProvider';
+import { ApiProvider } from './components/NewsProvider';
 import Navbar from './components/Navbar';
 import './App.css';
 import Footer from './components/Footer';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
     <div className="App">
-      <NewsProvider>
-        <div className='d-flex '>
+      <ApiProvider>
           <header><Navbar /></header>
-          <main><GetNews limit={24}/></main>
-        </div>
-      </NewsProvider>
+          <HomePage />
+      </ApiProvider>
       <Footer />
     </div>
   );
