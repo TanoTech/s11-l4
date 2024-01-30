@@ -1,5 +1,4 @@
-import GetNews from './components/GetNews';
-import { ApiProvider } from './components/NewsProvider';
+import { ApiProvider } from './components/DataProvider';
 import Navbar from './components/Navbar';
 import './App.css';
 import Footer from './components/Footer';

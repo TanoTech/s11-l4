@@ -1,11 +1,10 @@
-import GetBlogs from "./GetBlogs";
-import GetNews from "./GetNews";
+import GetData from "./GetData";
 
 const HomePage: React.FC = () => {
     return (
         <main className="d-flex">
-            <GetNews limit={5} />
-            <GetBlogs limit={5} />
+            <GetData topic={'articles'} limit={10} />
+            <GetData topic={'blogs'} limit={10}   />          
         </main>
     )
 }
